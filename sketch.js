@@ -117,6 +117,12 @@ function draw(){
     slingshot.display();    
 }
 
+function keyPressed(){
+    if(keyCode === 32){
+        slingshot.attach(polygon.body);
+    }
+}
+
 function mouseDragged(){
     Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
 }

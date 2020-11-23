@@ -5,6 +5,7 @@ class Box {
       'friction':1.0,
       'density':0.5
     }
+    this.Visiblity=255;
     this.body = Bodies.rectangle(x,y,width,height,options);
     this.width = width;
     this.height = height;
@@ -12,8 +13,17 @@ class Box {
   }
   display() {
     var pos =this.body.position;
-    rectMode(CENTER);
-    fill(7,136,163);
-    rect(pos.x,pos.y,this.width,this.height);
+    //console.log(this.body.speed);
+      if(this.body.speed<3){
+        rectMode(CENTER);
+        fill(7,136,163);
+        rect(pos.x,pos.y,this.width,this.height);
+      }
+      else{
+        World.remove(world, this.body);
+        push();
+        this.Visiblity=this.Visiblity-5;
+        pop();
+      }  
   }
 };
